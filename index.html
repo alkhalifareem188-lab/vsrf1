@@ -958,3 +958,17 @@ renderGiveaways();
 
 </script></body>
 </html>
+
+function updateTicketStatus(index, status) {
+    if (!isDeveloper()) return;
+    if (!tickets[index]) return;
+
+    if (status === "Completed") {
+        tickets.splice(index, 1);
+    } else {
+        tickets[index].status = status;
+    }
+
+    saveDatabase();
+    renderDeveloper();
+}
