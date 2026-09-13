@@ -1,73 +1,322 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VSRF | VRFS League</title><style>
+
+<title>VSRF | VRFS League</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #08080f;
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 10% 10%, #ff1744 0%, transparent 30%),
+        radial-gradient(circle at 90% 10%, #7b1cff 0%, transparent 30%),
+        radial-gradient(circle at 50% 100%, #0055ff 0%, transparent 35%),
+        #08080f;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 header {
     text-align: center;
-    padding: 30px 15px;
-    background: linear-gradient(135deg, #641cff, #e21cff);
+    padding: 35px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1744,
+            #8b1cff,
+            #e21cff
+        );
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.35);
 }
 
 header h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 52px;
+    letter-spacing: 3px;
 }
 
 header p {
     margin: 8px 0 0;
-    opacity: .85;
+    opacity: .9;
 }
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+
+    gap: 12px;
+
     padding: 15px;
-    background: #14141f;
+
+    background:
+        rgba(8,8,15,.95);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.1);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-button {
+
+/* =========================
+   NAV BUTTONS
+========================= */
+
+.navButton {
+    position: relative;
+
+    min-width: 125px;
+
     border: none;
-    border-radius: 10px;
-    padding: 12px 17px;
-    background: #713cff;
+    border-radius: 12px;
+
+    padding: 12px 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #8a4dff,
+            #5720d6
+        );
+
     color: white;
+
     font-weight: bold;
+
     cursor: pointer;
-    transition: .2s;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    opacity: .85;
+.navButton:hover {
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    box-shadow:
+        0 8px 20px
+        rgba(123,60,255,.4);
 }
 
-.danger {
-    background: #d93652;
+
+/* =========================
+   3D BOOTS MENU
+========================= */
+
+.bootMenu {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-left: 10px;
+
+    perspective: 500px;
 }
 
-.success {
-    background: #20a66a;
+.boot {
+    width: 75px;
+    height: 38px;
+
+    position: relative;
+
+    transform:
+        rotateX(18deg)
+        rotateY(-18deg)
+        rotateZ(-8deg);
+
+    filter:
+        drop-shadow(
+            0 8px 5px
+            rgba(0,0,0,.55)
+        );
+
+    transition:
+        transform .3s;
 }
+
+.boot:hover {
+    transform:
+        rotateX(8deg)
+        rotateY(25deg)
+        rotateZ(-3deg)
+        translateY(-7px);
+}
+
+
+/* boot body */
+
+.bootBody {
+    position: absolute;
+
+    width: 52px;
+    height: 27px;
+
+    left: 12px;
+    top: 5px;
+
+    border-radius:
+        8px 15px 7px 8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d6d6d6 50%,
+            #888
+        );
+
+    box-shadow:
+        inset -5px -5px 8px
+        rgba(0,0,0,.25),
+
+        inset 4px 4px 5px
+        rgba(255,255,255,.8);
+}
+
+
+/* boot toe */
+
+.bootToe {
+    position: absolute;
+
+    width: 28px;
+    height: 18px;
+
+    right: -2px;
+    top: 10px;
+
+    border-radius:
+        5px 14px 10px 5px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f7f7f7,
+            #aaa
+        );
+}
+
+
+/* boot ankle */
+
+.bootAnkle {
+    position: absolute;
+
+    width: 20px;
+    height: 24px;
+
+    left: 5px;
+    top: 0;
+
+    border-radius:
+        6px 4px 3px 6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #aaa
+        );
+}
+
+
+/* boot sole */
+
+.bootSole {
+    position: absolute;
+
+    width: 67px;
+    height: 6px;
+
+    left: 4px;
+    bottom: 1px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111,
+            #444,
+            #111
+        );
+}
+
+
+/* boot stripe */
+
+.bootStripe {
+    position: absolute;
+
+    width: 5px;
+    height: 24px;
+
+    left: 28px;
+    top: 4px;
+
+    transform:
+        rotate(25deg);
+
+    background:
+        #ff1744;
+
+    border-radius: 3px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container {
-    max-width: 1000px;
-    margin: 25px auto;
-    padding: 0 16px;
+    max-width: 1050px;
+
+    margin:
+        30px auto;
+
+    padding:
+        0 16px;
 }
+
+
+/* =========================
+   PAGES
+========================= */
 
 .page {
     display: none;
@@ -77,267 +326,852 @@ button:hover {
     display: block;
 }
 
+
+/* =========================
+   CARDS
+========================= */
+
 .card {
-    background: #151521;
-    border: 1px solid #29293c;
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 18px;
+    background:
+        rgba(18,18,30,.94);
+
+    border:
+        1px solid #303047;
+
+    border-radius:
+        18px;
+
+    padding:
+        24px;
+
+    margin-bottom:
+        20px;
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
 }
+
+
+/* =========================
+   GRID
+========================= */
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(230px,1fr)
+        );
+
+    gap:
+        18px;
 }
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border:
+        none;
+
+    border-radius:
+        10px;
+
+    padding:
+        12px 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #713cff,
+            #5420d5
+        );
+
+    color:
+        white;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+}
+
+button:hover {
+    transform:
+        translateY(-2px);
+
+    opacity:
+        .9;
+}
+
+.success {
+    background:
+        linear-gradient(
+            135deg,
+            #20c77a,
+            #148653
+        );
+}
+
+.danger {
+    background:
+        linear-gradient(
+            135deg,
+            #ef4058,
+            #ad2038
+        );
+}
+
+
+/* =========================
+   INPUTS
+========================= */
 
 input {
-    width: 100%;
-    padding: 13px;
-    margin: 7px 0 15px;
-    border-radius: 9px;
-    border: 1px solid #3b3b50;
-    background: #0e0e17;
-    color: white;
+    width:
+        100%;
+
+    padding:
+        14px;
+
+    margin:
+        7px 0 16px;
+
+    border-radius:
+        10px;
+
+    border:
+        1px solid #40405a;
+
+    background:
+        #0c0c15;
+
+    color:
+        white;
+
+    outline:
+        none;
 }
+
+input:focus {
+    border-color:
+        #8a4dff;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(138,77,255,.15);
+}
+
+
+/* =========================
+   TICKETS
+========================= */
 
 .ticket {
-    background: #101018;
-    border-left: 4px solid #783fff;
-    padding: 15px;
-    margin: 12px 0;
-    border-radius: 8px;
+    background:
+        #101018;
+
+    border-left:
+        4px solid #783fff;
+
+    padding:
+        17px;
+
+    margin:
+        13px 0;
+
+    border-radius:
+        10px;
 }
+
+.ticket.approved {
+    border-left-color:
+        #ffd000;
+}
+
+.ticket.completed {
+    border-left-color:
+        #20c77a;
+}
+
+
+/* =========================
+   STATUS
+========================= */
 
 .status {
-    display: inline-block;
-    padding: 5px 9px;
-    border-radius: 8px;
-    background: #292940;
+    display:
+        inline-block;
+
+    padding:
+        6px 10px;
+
+    border-radius:
+        8px;
+
+    background:
+        #292940;
+
+    font-weight:
+        bold;
 }
+
+
+/* =========================
+   TEXT
+========================= */
 
 .muted {
-    opacity: .7;
-}
-
-#developerPanel {
-    display: none;
-}
-
-.message {
-    margin-top: 10px;
-    font-weight: bold;
+    opacity:
+        .7;
 }
 
 .empty {
-    opacity: .6;
-    padding: 15px 0;
+    opacity:
+        .6;
+
+    padding:
+        15px 0;
 }
-</style></head><body><header>
+
+.message {
+    margin-top:
+        10px;
+
+    font-weight:
+        bold;
+}
+
+
+/* =========================
+   DEVELOPER
+========================= */
+
+#developerPanel {
+    display:
+        none;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align:
+        center;
+
+    padding:
+        10px 0 5px;
+}
+
+.hero h2 {
+    font-size:
+        30px;
+}
+
+.heroGlow {
+    display:
+        inline-block;
+
+    padding:
+        8px 18px;
+
+    border-radius:
+        30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff1744,
+            #7b1cff
+        );
+
+    font-weight:
+        bold;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    header h1 {
+        font-size:
+            40px;
+    }
+
+    nav {
+        gap:
+            7px;
+    }
+
+    .navButton {
+        min-width:
+            100px;
+
+        padding:
+            10px;
+    }
+
+    .bootMenu {
+        display:
+            none;
+    }
+
+    .card {
+        padding:
+            18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
     <h1>VSRF</h1>
-    <p>VRFS League</p>
-</header><nav>
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('giveaways')">Giveaways</button>
-    <button onclick="showPage('tickets')">My Tickets</button>
-    <button onclick="showPage('developer')">Developer Mode</button>
-</nav><div class="container"><!-- HOME --><section id="home" class="page active"><div class="card">
-    <h2>🏆 Welcome to VSRF</h2>
-    <p>
-        Welcome to the official VSRF VRFS League website.
-    </p>
-
-    <button onclick="showPage('giveaways')">
-        View Giveaways
-    </button>
-</div>
-
-<div class="grid">
-
-    <div class="card">
-        <h3>🎁 Giveaways</h3>
-        <p>
-            Won a giveaway? Claim it using your VRFS Player ID.
-        </p>
-
-        <button onclick="showPage('giveaways')">
-            View Giveaways
-        </button>
-    </div>
-
-    <div class="card">
-        <h3>🎫 Tickets</h3>
-        <p>
-            Check the status of your giveaway tickets.
-        </p>
-
-        <button onclick="showPage('tickets')">
-            Check Tickets
-        </button>
-    </div>
-
-</div>
-
-</section><!-- GIVEAWAYS --><section id="giveaways" class="page"><div class="card">
-    <h2>🎁 Active Giveaways</h2>
-
-    <div id="giveawayList"></div>
-</div>
-
-</section><!-- CLAIM --><section id="claim" class="page"><div class="card">
-
-    <h2>🎫 Claim Giveaway</h2>
-
-    <label>Giveaway</label>
-
-    <input id="claimGiveaway" readonly>
-
-    <label>VRFS Player ID *</label>
-
-    <input
-        id="playerID"
-        placeholder="Enter your VRFS Player ID"
-    >
-
-    <label>Discord Username</label>
-
-    <input
-        id="discord"
-        placeholder="@username"
-    >
-
-    <button onclick="submitTicket()" class="success">
-        Submit Ticket
-    </button>
-
-    <p id="claimMessage" class="message"></p>
-
-</div>
-
-</section><!-- TICKETS --><section id="tickets" class="page"><div class="card">
-
-    <h2>🔎 My Tickets</h2>
 
     <p>
-        Enter the VRFS Player ID you used when creating your ticket.
+        VRFS League
     </p>
 
-    <input
-        id="searchID"
-        placeholder="VRFS Player ID"
-    >
+</header>
 
-    <button onclick="searchTickets()">
-        Search
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <button
+        class="navButton"
+        onclick="showPage('home')"
+    >
+        🏠 Home
     </button>
 
-    <div id="ticketResults"></div>
 
-</div>
-
-</section><!-- DEVELOPER --><section id="developer" class="page"><div id="developerLogin" class="card">
-
-    <h2>🔐 Developer Mode</h2>
-
-    <p>Developer access required.</p>
-
-    <input
-        id="developerPassword"
-        type="password"
-        placeholder="Developer passcode"
+    <button
+        class="navButton"
+        onclick="showPage('giveaways')"
     >
-
-    <button onclick="loginDeveloper()">
-        Enter Developer Mode
+        🎁 Giveaways
     </button>
 
-    <p id="loginMessage" class="message"></p>
 
-</div>
-
-
-<div id="developerPanel">
-
-    <div class="card">
-
-        <h2>🛠️ VSRF Developer Dashboard</h2>
-
-        <p>
-            Manage VSRF giveaways and player tickets.
-        </p>
-
-        <button onclick="logoutDeveloper()" class="danger">
-            Log Out
-        </button>
-
-    </div>
+    <button
+        class="navButton"
+        onclick="showPage('tickets')"
+    >
+        🎫 My Tickets
+    </button>
 
 
-    <!-- CREATE GIVEAWAY -->
-    <div class="card">
+    <button
+        class="navButton"
+        onclick="showPage('developer')"
+    >
+        🛠️ Developer
+    </button>
 
-        <h3>➕ Create Giveaway</h3>
 
-        <input
-            id="newGiveaway"
-            placeholder="Giveaway name"
+    <!-- 3D BOOTS -->
+
+    <div class="bootMenu">
+
+        <div class="boot">
+
+            <div class="bootAnkle"></div>
+
+            <div class="bootBody"></div>
+
+            <div class="bootToe"></div>
+
+            <div class="bootSole"></div>
+
+            <div class="bootStripe"></div>
+
+        </div>
+
+
+        <div
+            class="boot"
+            style="
+                transform:
+                rotateX(18deg)
+                rotateY(18deg)
+                rotateZ(8deg);
+            "
         >
 
-        <button onclick="createGiveaway()" class="success">
-            Create Giveaway
+            <div class="bootAnkle"></div>
+
+            <div class="bootBody"></div>
+
+            <div class="bootToe"></div>
+
+            <div class="bootSole"></div>
+
+            <div
+                class="bootStripe"
+                style="
+                    background:#7b1cff;
+                "
+            ></div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section
+    id="home"
+    class="page active"
+>
+
+    <div class="card hero">
+
+        <span class="heroGlow">
+            OFFICIAL VRFS LEAGUE
+        </span>
+
+        <h2>
+            🏆 Welcome to VSRF
+        </h2>
+
+        <p>
+            Welcome to the official
+            VSRF VRFS League website.
+        </p>
+
+        <button
+            onclick="showPage('giveaways')"
+        >
+            View Giveaways
         </button>
 
-        <p id="giveawayMessage" class="message"></p>
-
     </div>
 
 
-    <!-- NOTIFICATIONS -->
+    <div class="grid">
+
+        <div class="card">
+
+            <h3>
+                🎁 Giveaways
+            </h3>
+
+            <p>
+                Won a VSRF giveaway?
+                Claim your prize using
+                your VRFS Player ID.
+            </p>
+
+            <button
+                onclick="showPage('giveaways')"
+            >
+                View Giveaways
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                🎫 Tickets
+            </h3>
+
+            <p>
+                Check your giveaway
+                ticket status using
+                your VRFS Player ID.
+            </p>
+
+            <button
+                onclick="showPage('tickets')"
+            >
+                Check Tickets
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                ⚽ VSRF
+            </h3>
+
+            <p>
+                Compete, win giveaways,
+                and represent your team.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GIVEAWAYS
+========================= -->
+
+<section
+    id="giveaways"
+    class="page"
+>
+
     <div class="card">
 
-        <h3>🔔 Giveaway Claim Notifications</h3>
+        <h2>
+            🎁 Active Giveaways
+        </h2>
 
-        <div id="developerTickets"></div>
+        <p class="muted">
+            Select a giveaway to submit
+            your claim.
+        </p>
+
+        <div
+            id="giveawayList"
+        ></div>
 
     </div>
 
+</section>
 
-    <!-- GIVEAWAY MANAGEMENT -->
+
+<!-- =========================
+     CLAIM
+========================= -->
+
+<section
+    id="claim"
+    class="page"
+>
+
     <div class="card">
 
-        <h3>🎁 Manage Giveaways</h3>
+        <h2>
+            🎫 Claim Giveaway
+        </h2>
 
-        <div id="developerGiveaways"></div>
+
+        <label>
+            Giveaway
+        </label>
+
+        <input
+            id="claimGiveaway"
+            readonly
+        >
+
+
+        <label>
+            VRFS Player ID *
+        </label>
+
+        <input
+            id="playerID"
+            placeholder="Enter your VRFS Player ID"
+        >
+
+
+        <label>
+            Discord Username
+        </label>
+
+        <input
+            id="discord"
+            placeholder="@username"
+        >
+
+
+        <button
+            onclick="submitTicket()"
+            class="success"
+        >
+            Submit Ticket
+        </button>
+
+
+        <p
+            id="claimMessage"
+            class="message"
+        ></p>
 
     </div>
+
+</section>
+
+
+<!-- =========================
+     MY TICKETS
+========================= -->
+
+<section
+    id="tickets"
+    class="page"
+>
+
+    <div class="card">
+
+        <h2>
+            🔎 My Tickets
+        </h2>
+
+        <p class="muted">
+            Enter the VRFS Player ID
+            used when creating your ticket.
+        </p>
+
+
+        <input
+            id="searchID"
+            placeholder="VRFS Player ID"
+        >
+
+
+        <button
+            onclick="searchTickets()"
+        >
+            Search
+        </button>
+
+
+        <div
+            id="ticketResults"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DEVELOPER
+========================= -->
+
+<section
+    id="developer"
+    class="page"
+>
+
+
+    <!-- LOGIN -->
+
+    <div
+        id="developerLogin"
+        class="card"
+    >
+
+        <h2>
+            🔐 Developer Mode
+        </h2>
+
+        <p>
+            Developer access required.
+        </p>
+
+
+        <input
+            id="developerPassword"
+            type="password"
+            placeholder="Developer passcode"
+        >
+
+
+        <button
+            onclick="loginDeveloper()"
+        >
+            Enter Developer Mode
+        </button>
+
+
+        <p
+            id="loginMessage"
+            class="message"
+        ></p>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <div
+        id="developerPanel"
+    >
+
+
+        <div class="card">
+
+            <h2>
+                🛠️ VSRF Developer Dashboard
+            </h2>
+
+            <p>
+                Manage giveaways and
+                giveaway claims.
+            </p>
+
+
+            <button
+                onclick="logoutDeveloper()"
+                class="danger"
+            >
+                Log Out
+            </button>
+
+        </div>
+
+
+        <!-- CREATE GIVEAWAY -->
+
+        <div class="card">
+
+            <h3>
+                ➕ Create Giveaway
+            </h3>
+
+
+            <input
+                id="newGiveaway"
+                placeholder="Giveaway name"
+            >
+
+
+            <button
+                onclick="createGiveaway()"
+                class="success"
+            >
+                Create Giveaway
+            </button>
+
+
+            <p
+                id="giveawayMessage"
+                class="message"
+            ></p>
+
+        </div>
+
+
+        <!-- CLAIM NOTIFICATIONS -->
+
+        <div class="card">
+
+            <h3>
+                🔔 Giveaway Claim Notifications
+            </h3>
+
+
+            <p class="muted">
+                Completed claims automatically
+                disappear from this list.
+            </p>
+
+
+            <div
+                id="developerTickets"
+            ></div>
+
+        </div>
+
+
+        <!-- MANAGE GIVEAWAYS -->
+
+        <div class="card">
+
+            <h3>
+                🎁 Manage Giveaways
+            </h3>
+
+
+            <div
+                id="developerGiveaways"
+            ></div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
 
 </div>
 
-</section></div><script>
 
-/* ================================
-   VSRF SETTINGS
-================================ */
+<script>
 
-const DEVELOPER_PASSWORD = "VSRF-DEV-2026";
+/* =========================
+   DEVELOPER PASSWORD
+========================= */
+
+const DEVELOPER_PASSWORD =
+    "VSRF-DEV-2026";
 
 
-/* ================================
+/* =========================
    DATABASE
-================================ */
+========================= */
 
 let giveaways =
-    JSON.parse(localStorage.getItem("VSRF_GIVEAWAYS")) || [
+    JSON.parse(
+        localStorage.getItem(
+            "VSRF_GIVEAWAYS"
+        )
+    ) || [
         "VSRF Custom Giveaway"
     ];
 
+
 let tickets =
-    JSON.parse(localStorage.getItem("VSRF_TICKETS")) || [];
+    JSON.parse(
+        localStorage.getItem(
+            "VSRF_TICKETS"
+        )
+    ) || [];
 
 
-/* ================================
-   SAVE DATABASE
-================================ */
+/* =========================
+   SAVE
+========================= */
 
 function saveDatabase() {
 
@@ -346,123 +1180,223 @@ function saveDatabase() {
         JSON.stringify(giveaways)
     );
 
+
     localStorage.setItem(
         "VSRF_TICKETS",
         JSON.stringify(tickets)
     );
+
 }
 
 
-/* ================================
+/* =========================
    PAGE NAVIGATION
-================================ */
+========================= */
 
 function showPage(pageID) {
 
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
 
-    const page = document.getElementById(pageID);
+            page.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const page =
+        document.getElementById(
+            pageID
+        );
+
 
     if (page) {
-        page.classList.add("active");
+
+        page.classList.add(
+            "active"
+        );
+
     }
 
-    if (pageID === "giveaways") {
+
+    if (
+        pageID ===
+        "giveaways"
+    ) {
+
         renderGiveaways();
+
     }
 
-    if (pageID === "developer") {
+
+    if (
+        pageID ===
+        "developer"
+    ) {
+
         renderDeveloper();
+
     }
+
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
-/* ================================
+/* =========================
    GIVEAWAYS
-================================ */
+========================= */
 
 function renderGiveaways() {
 
-    const list = document.getElementById("giveawayList");
+    const list =
+        document.getElementById(
+            "giveawayList"
+        );
+
 
     list.innerHTML = "";
 
-    if (giveaways.length === 0) {
+
+    if (
+        giveaways.length === 0
+    ) {
 
         list.innerHTML =
-            '<p class="empty">There are currently no active giveaways.</p>';
+            '<p class="empty">' +
+            'There are currently no active giveaways.' +
+            '</p>';
 
         return;
+
     }
 
-    giveaways.forEach((giveaway, index) => {
 
-        const card = document.createElement("div");
+    giveaways.forEach(
+        (giveaway, index) => {
 
-        card.className = "ticket";
+            const card =
+                document.createElement(
+                    "div"
+                );
 
-        card.innerHTML = `
-            <h3>🎁 ${escapeHTML(giveaway)}</h3>
-            <p class="muted">
-                Enter your VRFS Player ID to claim this giveaway.
-            </p>
 
-            <button onclick="openClaim(${index})">
-                Claim Giveaway
-            </button>
-        `;
+            card.className =
+                "ticket";
 
-        list.appendChild(card);
-    });
+
+            card.innerHTML = `
+
+                <h3>
+                    🎁
+                    ${escapeHTML(giveaway)}
+                </h3>
+
+                <p class="muted">
+                    Enter your VRFS Player ID
+                    to claim this giveaway.
+                </p>
+
+                <button
+                    onclick="openClaim(${index})"
+                >
+                    Claim Giveaway
+                </button>
+
+            `;
+
+
+            list.appendChild(
+                card
+            );
+
+        }
+    );
+
 }
 
 
-/* ================================
+/* =========================
    OPEN CLAIM
-================================ */
+========================= */
 
 function openClaim(index) {
 
-    if (!giveaways[index]) {
-        alert("That giveaway no longer exists.");
+    if (
+        !giveaways[index]
+    ) {
+
+        alert(
+            "That giveaway no longer exists."
+        );
+
         return;
+
     }
 
-    document.getElementById("claimGiveaway").value =
+
+    document.getElementById(
+        "claimGiveaway"
+    ).value =
         giveaways[index];
 
-    document.getElementById("playerID").value = "";
-    document.getElementById("discord").value = "";
-    document.getElementById("claimMessage").textContent = "";
 
-    showPage("claim");
+    document.getElementById(
+        "playerID"
+    ).value = "";
+
+
+    document.getElementById(
+        "discord"
+    ).value = "";
+
+
+    document.getElementById(
+        "claimMessage"
+    ).textContent = "";
+
+
+    showPage(
+        "claim"
+    );
+
 }
 
 
-/* ================================
+/* =========================
    SUBMIT TICKET
-================================ */
+========================= */
 
 function submitTicket() {
 
     const giveaway =
-        document.getElementById("claimGiveaway").value.trim();
+        document.getElementById(
+            "claimGiveaway"
+        ).value.trim();
+
 
     const playerID =
-        document.getElementById("playerID").value.trim();
+        document.getElementById(
+            "playerID"
+        ).value.trim();
+
 
     const discord =
-        document.getElementById("discord").value.trim();
+        document.getElementById(
+            "discord"
+        ).value.trim();
+
 
     const message =
-        document.getElementById("claimMessage");
+        document.getElementById(
+            "claimMessage"
+        );
 
 
     if (!giveaway) {
@@ -471,6 +1405,7 @@ function submitTicket() {
             "Please select a giveaway.";
 
         return;
+
     }
 
 
@@ -480,13 +1415,23 @@ function submitTicket() {
             "Please enter your VRFS Player ID.";
 
         return;
+
     }
 
 
-    const alreadySubmitted = tickets.some(ticket =>
-        ticket.playerID.toLowerCase() === playerID.toLowerCase() &&
-        ticket.giveaway === giveaway
-    );
+    const alreadySubmitted =
+        tickets.some(ticket =>
+
+            ticket.playerID
+                .toLowerCase() ===
+            playerID.toLowerCase()
+
+            &&
+
+            ticket.giveaway ===
+            giveaway
+
+        );
 
 
     if (alreadySubmitted) {
@@ -495,6 +1440,7 @@ function submitTicket() {
             "You already submitted a ticket for this giveaway.";
 
         return;
+
     }
 
 
@@ -502,23 +1448,34 @@ function submitTicket() {
 
         id:
             "VSRF-" +
-            Date.now().toString().slice(-8),
+            Date.now()
+                .toString()
+                .slice(-8),
 
-        giveaway: giveaway,
+        giveaway:
+            giveaway,
 
-        playerID: playerID,
+        playerID:
+            playerID,
 
-        discord: discord || "Not provided",
+        discord:
+            discord ||
+            "Not provided",
 
-        status: "Pending",
+        status:
+            "Pending",
 
         created:
-            new Date().toLocaleString()
+            new Date()
+                .toLocaleString()
 
     };
 
 
-    tickets.push(ticket);
+    tickets.push(
+        ticket
+    );
+
 
     saveDatabase();
 
@@ -526,22 +1483,35 @@ function submitTicket() {
     message.textContent =
         "✅ Ticket submitted successfully!";
 
-    document.getElementById("playerID").value = "";
-    document.getElementById("discord").value = "";
+
+    document.getElementById(
+        "playerID"
+    ).value = "";
+
+
+    document.getElementById(
+        "discord"
+    ).value = "";
+
 }
 
 
-/* ================================
+/* =========================
    SEARCH TICKETS
-================================ */
+========================= */
 
 function searchTickets() {
 
     const searchID =
-        document.getElementById("searchID").value.trim();
+        document.getElementById(
+            "searchID"
+        ).value.trim();
+
 
     const results =
-        document.getElementById("ticketResults");
+        document.getElementById(
+            "ticketResults"
+        );
 
 
     results.innerHTML = "";
@@ -550,106 +1520,199 @@ function searchTickets() {
     if (!searchID) {
 
         results.innerHTML =
-            '<p class="message">Enter your VRFS Player ID first.</p>';
+            '<p class="message">' +
+            'Enter your VRFS Player ID first.' +
+            '</p>';
 
         return;
+
     }
 
 
     const found =
         tickets.filter(ticket =>
-            ticket.playerID.toLowerCase() ===
+
+            ticket.playerID
+                .toLowerCase() ===
             searchID.toLowerCase()
+
         );
 
 
-    if (found.length === 0) {
+    if (
+        found.length === 0
+    ) {
 
         results.innerHTML =
-            '<p class="empty">No tickets found for that Player ID.</p>';
+            '<p class="empty">' +
+            'No tickets found for that Player ID.' +
+            '</p>';
 
         return;
+
     }
 
 
-    found.forEach(ticket => {
+    found.forEach(
+        ticket => {
 
-        const div = document.createElement("div");
+            const div =
+                document.createElement(
+                    "div"
+                );
 
-        div.className = "ticket";
 
-        div.innerHTML = `
-            <h3>🎫 ${escapeHTML(ticket.giveaway)}</h3>
+            div.className =
+                "ticket";
 
-            <p>
-                <strong>Ticket:</strong>
-                ${escapeHTML(ticket.id)}
-            </p>
 
-            <p>
-                <strong>Player ID:</strong>
-                ${escapeHTML(ticket.playerID)}
-            </p>
+            if (
+                ticket.status ===
+                "Completed"
+            ) {
 
-            <p>
-                <strong>Status:</strong>
-                <span class="status">
-                    ${escapeHTML(ticket.status)}
-                </span>
-            </p>
+                div.classList.add(
+                    "completed"
+                );
 
-            <p class="muted">
-                Submitted: ${escapeHTML(ticket.created)}
-            </p>
-        `;
+            }
 
-        results.appendChild(div);
-    });
+
+            if (
+                ticket.status ===
+                "Approved"
+            ) {
+
+                div.classList.add(
+                    "approved"
+                );
+
+            }
+
+
+            div.innerHTML = `
+
+                <h3>
+                    🎫
+                    ${escapeHTML(
+                        ticket.giveaway
+                    )}
+                </h3>
+
+                <p>
+                    <strong>
+                        Ticket:
+                    </strong>
+
+                    ${escapeHTML(
+                        ticket.id
+                    )}
+                </p>
+
+                <p>
+                    <strong>
+                        Player ID:
+                    </strong>
+
+                    ${escapeHTML(
+                        ticket.playerID
+                    )}
+                </p>
+
+                <p>
+                    <strong>
+                        Status:
+                    </strong>
+
+                    <span class="status">
+                        ${escapeHTML(
+                            ticket.status
+                        )}
+                    </span>
+                </p>
+
+                <p class="muted">
+                    Submitted:
+                    ${escapeHTML(
+                        ticket.created
+                    )}
+                </p>
+
+            `;
+
+
+            results.appendChild(
+                div
+            );
+
+        }
+    );
+
 }
 
 
-/* ================================
+/* =========================
    DEVELOPER LOGIN
-================================ */
+========================= */
 
 function loginDeveloper() {
 
     const password =
-        document.getElementById("developerPassword").value;
+        document.getElementById(
+            "developerPassword"
+        ).value;
+
 
     const message =
-        document.getElementById("loginMessage");
+        document.getElementById(
+            "loginMessage"
+        );
 
 
-    if (password === DEVELOPER_PASSWORD) {
+    if (
+        password ===
+        DEVELOPER_PASSWORD
+    ) {
 
         localStorage.setItem(
             "VSRF_DEV_LOGGED_IN",
             "true"
         );
 
-        document.getElementById("developerLogin").style.display =
+
+        document.getElementById(
+            "developerLogin"
+        ).style.display =
             "none";
 
-        document.getElementById("developerPanel").style.display =
+
+        document.getElementById(
+            "developerPanel"
+        ).style.display =
             "block";
 
-        message.textContent = "";
+
+        message.textContent =
+            "";
+
 
         renderDeveloper();
 
-    } else {
+    }
+
+    else {
 
         message.textContent =
             "❌ Incorrect developer passcode.";
 
     }
+
 }
 
 
-/* ================================
-   DEVELOPER LOGOUT
-================================ */
+/* =========================
+   LOGOUT
+========================= */
 
 function logoutDeveloper() {
 
@@ -657,31 +1720,54 @@ function logoutDeveloper() {
         "VSRF_DEV_LOGGED_IN"
     );
 
-    document.getElementById("developerPanel").style.display =
+
+    document.getElementById(
+        "developerPanel"
+    ).style.display =
         "none";
 
-    document.getElementById("developerLogin").style.display =
+
+    document.getElementById(
+        "developerLogin"
+    ).style.display =
         "block";
 
-    document.getElementById("developerPassword").value = "";
 
-    showPage("home");
+    document.getElementById(
+        "developerPassword"
+    ).value =
+        "";
+
+
+    showPage(
+        "home"
+    );
+
 }
 
 
-/* ================================
+/* =========================
    CREATE GIVEAWAY
-================================ */
+========================= */
 
 function createGiveaway() {
 
-    if (!isDeveloper()) return;
+    if (
+        !isDeveloper()
+    ) return;
+
 
     const input =
-        document.getElementById("newGiveaway");
+        document.getElementById(
+            "newGiveaway"
+        );
+
 
     const message =
-        document.getElementById("giveawayMessage");
+        document.getElementById(
+            "giveawayMessage"
+        );
+
 
     const name =
         input.value.trim();
@@ -693,281 +1779,562 @@ function createGiveaway() {
             "Enter a giveaway name.";
 
         return;
+
     }
 
 
-    if (giveaways.includes(name)) {
+    if (
+        giveaways.includes(name)
+    ) {
 
         message.textContent =
             "That giveaway already exists.";
 
         return;
+
     }
 
 
-    giveaways.push(name);
+    giveaways.push(
+        name
+    );
+
 
     saveDatabase();
 
-    input.value = "";
+
+    input.value =
+        "";
+
 
     message.textContent =
         "✅ Giveaway created!";
 
+
     renderDeveloper();
+
 }
 
 
-/* ================================
+/* =========================
    DELETE GIVEAWAY
-================================ */
+========================= */
 
 function deleteGiveaway(index) {
 
-    if (!isDeveloper()) return;
-
-    const name = giveaways[index];
-
-    if (!confirm(
-        `Delete "${name}"?`
-    )) {
-        return;
-    }
+    if (
+        !isDeveloper()
+    ) return;
 
 
-    giveaways.splice(index, 1);
+    const name =
+        giveaways[index];
+
+
+    if (
+        !confirm(
+            `Delete "${name}"?`
+        )
+    ) return;
+
+
+    giveaways.splice(
+        index,
+        1
+    );
+
 
     saveDatabase();
 
+
     renderDeveloper();
+
 }
 
 
-/* ================================
+/* =========================
    DEVELOPER TICKETS
-================================ */
+========================= */
 
 function renderDeveloperTickets() {
 
     const container =
-        document.getElementById("developerTickets");
+        document.getElementById(
+            "developerTickets"
+        );
 
-    container.innerHTML = "";
+
+    container.innerHTML =
+        "";
 
 
-    if (tickets.length === 0) {
+    /*
+        COMPLETED TICKETS ARE HIDDEN
+        FROM THE DEVELOPER LIST.
+    */
+
+    const activeTickets =
+        tickets.filter(
+            ticket =>
+                ticket.status !==
+                "Completed"
+        );
+
+
+    if (
+        activeTickets.length ===
+        0
+    ) {
 
         container.innerHTML =
-            '<p class="empty">No giveaway claims yet.</p>';
+            '<p class="empty">' +
+            'No active giveaway claims.' +
+            '</p>';
 
         return;
+
     }
 
 
-    [...tickets].reverse().forEach((ticket, reverseIndex) => {
+    activeTickets
+        .slice()
+        .reverse()
+        .forEach(
+            ticket => {
 
-        const actualIndex =
-            tickets.length - 1 - reverseIndex;
+                const actualIndex =
+                    tickets.indexOf(
+                        ticket
+                    );
 
-        const div =
-            document.createElement("div");
 
-        div.className = "ticket";
+                const div =
+                    document.createElement(
+                        "div"
+                    );
 
-        div.innerHTML = `
-            <h3>🔔 New Giveaway Claim</h3>
 
-            <p>
-                <strong>Giveaway:</strong>
-                ${escapeHTML(ticket.giveaway)}
-            </p>
+                div.className =
+                    "ticket";
 
-            <p>
-                <strong>Player ID:</strong>
-                ${escapeHTML(ticket.playerID)}
-            </p>
 
-            <p>
-                <strong>Discord:</strong>
-                ${escapeHTML(ticket.discord)}
-            </p>
+                if (
+                    ticket.status ===
+                    "Approved"
+                ) {
 
-            <p>
-                <strong>Ticket ID:</strong>
-                ${escapeHTML(ticket.id)}
-            </p>
+                    div.classList.add(
+                        "approved"
+                    );
 
-            <p>
-                <strong>Status:</strong>
-                <span class="status">
-                    ${escapeHTML(ticket.status)}
-                </span>
-            </p>
+                }
 
-            <p class="muted">
-                ${escapeHTML(ticket.created)}
-            </p>
 
-            <button
-                class="success"
-                onclick="updateTicketStatus(${actualIndex}, 'Approved')">
-                Approve
-            </button>
+                div.innerHTML = `
 
-            <button
-                onclick="updateTicketStatus(${actualIndex}, 'Completed')">
-                Complete
-            </button>
+                    <h3>
+                        🔔 Giveaway Claim
+                    </h3>
 
-            <button
-                class="danger"
-                onclick="updateTicketStatus(${actualIndex}, 'Rejected')">
-                Reject
-            </button>
-        `;
+                    <p>
+                        <strong>
+                            Giveaway:
+                        </strong>
 
-        container.appendChild(div);
-    });
+                        ${escapeHTML(
+                            ticket.giveaway
+                        )}
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Player ID:
+                        </strong>
+
+                        ${escapeHTML(
+                            ticket.playerID
+                        )}
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Discord:
+                        </strong>
+
+                        ${escapeHTML(
+                            ticket.discord
+                        )}
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Ticket ID:
+                        </strong>
+
+                        ${escapeHTML(
+                            ticket.id
+                        )}
+                    </p>
+
+
+                    <p>
+                        <strong>
+                            Status:
+                        </strong>
+
+                        <span class="status">
+                            ${escapeHTML(
+                                ticket.status
+                            )}
+                        </span>
+                    </p>
+
+
+                    <p class="muted">
+                        ${escapeHTML(
+                            ticket.created
+                        )}
+                    </p>
+
+
+                    ${
+                        ticket.status ===
+                        "Pending"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="success"
+                            onclick="
+                                updateTicketStatus(
+                                    ${actualIndex},
+                                    'Approved'
+                                )
+                            "
+                        >
+                            Approve
+                        </button>
+
+
+                        <button
+                            class="danger"
+                            onclick="
+                                updateTicketStatus(
+                                    ${actualIndex},
+                                    'Rejected'
+                                )
+                            "
+                        >
+                            Reject
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+                    }
+
+
+                    ${
+                        ticket.status ===
+                        "Approved"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="success"
+                            onclick="
+                                updateTicketStatus(
+                                    ${actualIndex},
+                                    'Completed'
+                                )
+                            "
+                        >
+                            Complete
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+                    }
+
+
+                    ${
+                        ticket.status ===
+                        "Rejected"
+
+                        ?
+
+                        `<p class="muted">
+                            This claim was rejected.
+                        </p>`
+
+                        :
+
+                        ""
+                    }
+
+                `;
+
+
+                container.appendChild(
+                    div
+                );
+
+            }
+        );
+
 }
 
 
-/* ================================
+/* =========================
    UPDATE TICKET
-================================ */
+========================= */
 
-function updateTicketStatus(index, status) {
+function updateTicketStatus(
+    index,
+    status
+) {
 
-    if (!isDeveloper()) return;
+    if (
+        !isDeveloper()
+    ) return;
 
-    if (!tickets[index]) return;
 
-    tickets[index].status = status;
+    if (
+        !tickets[index]
+    ) return;
+
+
+    /*
+        The ticket is NOT deleted.
+
+        It is simply changed to
+        Completed.
+
+        Developer notifications
+        automatically hide it.
+
+        Player can still search
+        their ID and see Completed.
+    */
+
+    tickets[index].status =
+        status;
+
 
     saveDatabase();
 
+
     renderDeveloper();
+
 }
 
 
-/* ================================
+/* =========================
    DEVELOPER GIVEAWAYS
-================================ */
+========================= */
 
 function renderDeveloperGiveaways() {
 
     const container =
-        document.getElementById("developerGiveaways");
+        document.getElementById(
+            "developerGiveaways"
+        );
 
-    container.innerHTML = "";
+
+    container.innerHTML =
+        "";
 
 
-    if (giveaways.length === 0) {
+    if (
+        giveaways.length ===
+        0
+    ) {
 
         container.innerHTML =
-            '<p class="empty">No giveaways available.</p>';
+            '<p class="empty">' +
+            'No giveaways available.' +
+            '</p>';
 
         return;
+
     }
 
 
-    giveaways.forEach((giveaway, index) => {
+    giveaways.forEach(
+        (giveaway, index) => {
 
-        const div =
-            document.createElement("div");
+            const div =
+                document.createElement(
+                    "div"
+                );
 
-        div.className = "ticket";
 
-        div.innerHTML = `
-            <strong>🎁 ${escapeHTML(giveaway)}</strong>
+            div.className =
+                "ticket";
 
-            <button
-                class="danger"
-                style="float:right"
-                onclick="deleteGiveaway(${index})">
-                Delete
-            </button>
 
-            <div style="clear:both"></div>
-        `;
+            div.innerHTML = `
 
-        container.appendChild(div);
-    });
+                <strong>
+                    🎁
+                    ${escapeHTML(
+                        giveaway
+                    )}
+                </strong>
+
+
+                <button
+                    class="danger"
+                    style="float:right"
+                    onclick="
+                        deleteGiveaway(
+                            ${index}
+                        )
+                    "
+                >
+                    Delete
+                </button>
+
+
+                <div
+                    style="clear:both"
+                ></div>
+
+            `;
+
+
+            container.appendChild(
+                div
+            );
+
+        }
+    );
+
 }
 
 
-/* ================================
-   DEVELOPER DASHBOARD
-================================ */
+/* =========================
+   RENDER DEVELOPER
+========================= */
 
 function renderDeveloper() {
 
-    if (!isDeveloper()) return;
+    if (
+        !isDeveloper()
+    ) return;
 
-    document.getElementById("developerLogin").style.display =
+
+    document.getElementById(
+        "developerLogin"
+    ).style.display =
         "none";
 
-    document.getElementById("developerPanel").style.display =
+
+    document.getElementById(
+        "developerPanel"
+    ).style.display =
         "block";
 
+
     renderDeveloperTickets();
+
+
     renderDeveloperGiveaways();
+
 }
 
 
-/* ================================
-   CHECK LOGIN
-================================ */
+/* =========================
+   CHECK DEVELOPER
+========================= */
 
 function isDeveloper() {
 
-    return localStorage.getItem(
-        "VSRF_DEV_LOGGED_IN"
-    ) === "true";
+    return (
+        localStorage.getItem(
+            "VSRF_DEV_LOGGED_IN"
+        ) ===
+        "true"
+    );
+
 }
 
 
-/* ================================
-   SECURITY / HTML ESCAPING
-================================ */
+/* =========================
+   SECURITY
+========================= */
 
-function escapeHTML(value) {
+function escapeHTML(
+    value
+) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
 }
 
 
-/* ================================
+/* =========================
    START WEBSITE
-================================ */
+========================= */
 
-if (isDeveloper()) {
+if (
+    isDeveloper()
+) {
 
-    document.getElementById("developerLogin").style.display =
+    document.getElementById(
+        "developerLogin"
+    ).style.display =
         "none";
 
-    document.getElementById("developerPanel").style.display =
+
+    document.getElementById(
+        "developerPanel"
+    ).style.display =
         "block";
+
 }
+
 
 renderGiveaways();
 
-</script></body>
-</html>
-function updateTicketStatus(index, status) {
-    if (!isDeveloper()) return;
-    if (!tickets[index]) return;
+</script>
 
-    if (status === "Completed") {
-        tickets.splice(index, 1);
-    } else {
-        tickets[index].status = status;
-    }
-
-    saveDatabase();
-    renderDeveloper();
-}
+</body>
+    </html>
